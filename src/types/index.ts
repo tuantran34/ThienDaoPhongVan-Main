@@ -1,31 +1,3 @@
-export interface StoryContext {
-  heroName: string;
-  currentStoryContext: string;
-  history: StoryHistoryItem[];
-  playerStats: {
-    tuVi: number;
-    charm: number;
-    fame: number;
-    mood: number;
-  };
-  characterAffection: { [characterId: string]: number };
-}
-
-export interface StoryResponse {
-  content: string;
-  choices: Choice[];
-  effects?: {
-    linhThach?: number;
-    tuVi?: number;
-    exp?: number;
-    fame?: number;
-    haoguang?: number;
-    charm?: number;
-    mood?: number;
-    affection?: { [characterId: string]: number };
-  };
-}
-
 export type Realm = string;
 
 export type RelationshipStage = 'stranger' | 'acquaint' | 'close' | 'intimate' | 'married';
@@ -363,4 +335,29 @@ export interface Choice {
     mood?: number;
     affection?: { [characterId: string]: number };
   };
+}
+
+// --- New Interfaces for AI Data ---
+export interface StoryChoice {
+  label: string;
+  text: string;
+  impact?: string;
+  effects?: Record<string, number>;
+}
+
+export interface StoryEvent {
+  id: string;
+  title: string;
+  content: string;
+  choices: StoryChoice[];
+  imageUrl?: string;
+  metadata?: Record<string, unknown>;
+}
+
+export interface NPCResponse {
+  text: string;
+  mood: 'happy' | 'neutral' | 'angry' | 'sad';
+  affectionChange: number;
+  contextUpdate?: string;
+  metadata?: Record<string, unknown>;
 }

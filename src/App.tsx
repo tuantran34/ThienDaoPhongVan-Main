@@ -49,6 +49,7 @@ export default function App() {
       wisdom: 1,
       fame: 10,
       chapter: 1,
+      stage: 1,
       location: 'Thanh Vân Trấn',
       characters: INITIAL_CHARACTERS,
       skills: INITIAL_SKILLS,
